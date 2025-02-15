@@ -1,0 +1,30 @@
+services:
+  frontend:
+    build: 
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: p26ankaj/randomproject-frontend:latest
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    image: p26ankaj/randomproject-backend:latest
+
+    
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - DATABASE_URL=postgres://avnadmin:AVNS_2WRsC63wUBTnk1tjq58@user-anypng-0329.d.aivencloud.com:28398/defaultdb?sslmode=require
+      - JWT_SECRET=DevelopedByPankajjaat
+      - NODE_ENV=production
