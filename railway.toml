@@ -5,9 +5,9 @@ JWT_SECRET = "47EB1BCCDFB55!"
 
 [[services]]
 name = "backend"
-type = "node"
+type = "container"
 root = "backend"
-start = "npm install && npm run start"
+start = "npm start"
 
 [[services]]
 name = "frontend"
